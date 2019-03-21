@@ -27,7 +27,6 @@ public class Robot
 
 
     public void forward(int distance){
-
         final double xOld = x;
         final double yOld = y;
 
