@@ -205,56 +205,56 @@ public class Horse {
         int[] yBottomUp = wayYbottomUP(this.y, this.x);   //7
 // смотрим куда может пойти конь
         if (xLeft != null){
-            int size = 0;
+            int size = 1;
             int y = xLeft[0];
             int x = xLeft[1];
             size = finSum(y, x, size); // подщет ходов куда может сходить конь
             arr[0] = size;
         }
         if (xLeftUp != null){
-            int size = 0;
+            int size = 1;
             int y = xLeftUp[0];
             int x = xLeftUp[1];
             size = finSum(y, x, size); // подщет ходов куда может сходить конь
             arr[1] = size;
         }
         if (xRight != null){
-           int size = 0;
+           int size = 1;
             int y = xRight[0];
             int x = xRight[1];
             size = finSum(y, x, size);
             arr[2] = size;
         }
         if (xRightUp != null){
-           int size = 0;
+           int size = 1;
             int y = xRightUp[0];
             int x = xRightUp[1];
             size = finSum(y, x, size);
             arr[3] = size;
         }
         if (yTop != null){
-           int size = 0;
+           int size = 1;
             int y = yTop[0];
             int x = yTop[1];
             size = finSum(y, x, size);
             arr[4] = size;
         }
         if (yTopUp != null){
-           int size = 0;
+           int size = 1;
             int y = yTopUp[0];
             int x = yTopUp[1];
             size = finSum(y, x, size);
             arr[5] = size;
         }
         if (yBottom != null){
-           int size = 0;
+           int size = 1;
             int y = yBottom[0];
             int x = yBottom[1];
             size = finSum(y, x, size);
             arr[6] = size;
         }
         if (yBottomUp != null){
-           int size = 0;
+           int size = 1;
             int y = yBottomUp[0];
             int x = yBottomUp[1];
             size = finSum(y, x, size);
