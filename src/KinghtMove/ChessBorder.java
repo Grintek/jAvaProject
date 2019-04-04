@@ -32,22 +32,6 @@ public class ChessBorder {
         return SIZE;
     }
 
-    public void setRight(int right) {
-        this.right = right;
-    }
-
-    public void setBottom(int bottom) {
-        this.bottom = bottom;
-    }
-
-    public void setLeft(int left) {
-        this.left = left;
-    }
-
-    public void setTop(int top) {
-        this.top = top;
-    }
-
     public int getLeft() {
         return left;
     }
@@ -73,7 +57,7 @@ public class ChessBorder {
     }
 
     public void border(int x, int y, int i){
-          bord[x][y] = i;
+          bord[y][x] = i;
   }
     //вывод доски в консоль
     void conclusion(){
