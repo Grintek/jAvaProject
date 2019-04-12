@@ -14,7 +14,6 @@ public class Implementation {
 
             chessBorder.border(horse.getX(), horse.getY(), i + 1);
 
-//            horse.move();
             System.out.println();
             for (int j : horse.semiFinal()){
                 System.out.println(j);

@@ -43,43 +43,6 @@ public class Horse {
         return x;
     }
 
-    public void move(){
-        //реализация хода коня, будет сравниваться с доской bord если данные кординаты = 0 то можно ходить, если нет то искать другой маршрут
-        int y = this.y;
-        int x = this.x;
-        //выбираем координаты следующего шага коня
-
-        if (x + 2 <= right) {
-            x += 2;
-        } else if (x - 2 >= left) {
-            x -= 2;
-        }
-
-        if (y - 1 >= top && bord[y - 1][x] == 0) {
-            if(x != this.x)
-                y -= 1;
-        } else if (y + 1 <= bottom && bord[y + 1][x] == 0) {
-            if(x != this.x)
-                y += 1;
-        }else{
-            x = this.x;
-        }
-
-
-//            if (y + 2 <= bottom && bord[y + 2][x] == 0) {
-//                y += 2;
-//            } else if (y - 2 >= top && bord[y - 2][x] == 0) {
-//                y -= 2;
-//            }
-//            if (x - 1 <= left && bord[x + 1][y] == 0) {
-//                x += 1;
-//            } else if (x + 1 >= right && bord[x - 1][y] == 0) {
-//                x -= 1;
-//            }
-        this.y = y;
-        this.x = x;
-
-    }
 
     private int[] wayXright(int y, int x){
         int ys = 1;
