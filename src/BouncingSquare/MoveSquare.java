@@ -8,5 +8,11 @@ public class MoveSquare {
 
         bsf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         bsf.setVisible(true);
+        for(int i= 0; i<1; i--){
+            for(i = 0; i < 100; i++) {
+                bsf.repaint();
+            }
+        }
+
     }
 }
