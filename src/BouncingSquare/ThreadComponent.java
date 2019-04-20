@@ -2,41 +2,53 @@ package BouncingSquare;
 
 import test.TestAnonymous;
 
-public class ThreadComponent extends Thread{
+import java.sql.Time;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
+public class ThreadComponent {
     private boolean up = false;
     private boolean down = false;
     private boolean left = false;
     private boolean right = false;
     public BouncingSquareComponent bsc;
     public static int i = 0;
-    ThreadComponent(BouncingSquareComponent bsc){
-        this.bsc = bsc;
-    }
-    @Override
-    public void run() {
-        for(i = 0; i < 1;){
-            try {
-                sleep(30);
-            } catch (InterruptedException e) {}
-            bsc.repaint();
-            BouncingSquareFrame.press();
-        }
-    }
-}
 
-class ThreadAnim extends Thread{
-    public BouncingSquareComponent bsc;
-    ThreadAnim(BouncingSquareComponent bsc){
+    ThreadComponent(BouncingSquareComponent bsc) {
         this.bsc = bsc;
     }
 
-    @Override
-    public void run() {
-        for(int i = 0; i < 100; i++){
-            try {
-                sleep(30);
-            } catch (InterruptedException e) {}
-            bsc.setYXOval();
-        }
+    public ExecutorService cycleFlow() {
+        ExecutorService threadExecutor = Executors.newSingleThreadExecutor();
+        threadExecutor.submit(() -> {
+            for (i = 0; i < 1; ) {
+                try {
+                    Thread.sleep(5);
+
+                } catch (InterruptedException e) {}
+                threadExecutor.shutdown();
+                BouncingSquareFrame.press();
+            }
+        });
+        return threadExecutor;
+    }
+    public ExecutorService animFlow(){
+        ExecutorService animExecutor = Executors.newSingleThreadExecutor();
+        animExecutor.submit(() -> {
+            for (int i = 0; i < 1;) {
+                try {
+                    Thread.sleep(6);
+                } catch (InterruptedException e) {}
+                bsc.setYXOval();
+            }
+        });
+
+        return animExecutor;
     }
 }
+
+
+
+
+

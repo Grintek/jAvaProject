@@ -3,11 +3,12 @@ package BouncingSquare;
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class BouncingSquareFrame extends JFrame {
     private static BouncingSquareComponent bc;
     private ThreadComponent tc;
-    private ThreadAnim ta;
     private static boolean up = false;
     private static boolean down = false;
     private static boolean left = false;
@@ -33,9 +34,15 @@ public class BouncingSquareFrame extends JFrame {
 
         bc = new BouncingSquareComponent();
         tc = new ThreadComponent(bc);
-        ta = new ThreadAnim(bc);
-        tc.start();
-        ta.start();
+
+        ExecutorService exp = Executors.newSingleThreadExecutor();
+        exp.submit(() -> {
+            for (;;) {
+                bc.repaint();
+            }
+        });
+        tc.cycleFlow();
+        tc.animFlow();
         bc.addKeyListener(new KeyListener() {
 
 
