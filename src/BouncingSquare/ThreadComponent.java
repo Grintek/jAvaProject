@@ -1,12 +1,8 @@
 package BouncingSquare;
 
-import test.TestAnonymous;
-
-import java.sql.Time;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
-
+// тут наши потоки
 public class ThreadComponent {
     private boolean up = false;
     private boolean down = false;
@@ -24,7 +20,7 @@ public class ThreadComponent {
         threadExecutor.submit(() -> {
             for (i = 0; i < 1; ) {
                 try {
-                    Thread.sleep(5);
+                    Thread.sleep(6);
 
                 } catch (InterruptedException e) {}
                 threadExecutor.shutdown();
@@ -41,10 +37,35 @@ public class ThreadComponent {
                     Thread.sleep(6);
                 } catch (InterruptedException e) {}
                 bsc.setYXOval();
+                animExecutor.shutdown();
             }
         });
 
         return animExecutor;
+    }
+    public  ExecutorService gravity(){
+        ExecutorService gravityExc = Executors.newSingleThreadExecutor();
+        gravityExc.submit(() -> {
+            for (int i = 0; i < 1;){
+                try {
+                    Thread.sleep(6);
+                } catch (InterruptedException e){}
+                bsc.gravity();
+                gravityExc.shutdown();
+            }
+        });
+        return gravityExc;
+    }
+    public ExecutorService bounce(){
+        ExecutorService bounceExc = Executors.newSingleThreadExecutor();
+        bounceExc.submit(()->{
+                for (int i = 0; i < 1;) {
+
+                    BouncingSquareFrame.bounceSquare();
+                    bounceExc.shutdown();
+                }
+            });
+        return bounceExc;
     }
 }
 

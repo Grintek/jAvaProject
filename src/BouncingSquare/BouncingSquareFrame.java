@@ -13,12 +13,16 @@ public class BouncingSquareFrame extends JFrame {
     private static boolean down = false;
     private static boolean left = false;
     private static boolean right = false;
+    public static boolean bounceBoolean = false;
 
 //передаем в другой поток для плавного передвижения квадрата без задержки при зажатия клавиши
-    public static void press(){
+    public static void bounceSquare(){
         if(up){
-            bc.yMinus();
+            bc.bounce();
         }
+    }
+    public static void press(){
+
         if(down){
             bc.yPlus();
         }
@@ -43,6 +47,8 @@ public class BouncingSquareFrame extends JFrame {
         });
         tc.cycleFlow();
         tc.animFlow();
+        tc.gravity();
+        tc.bounce();
         bc.addKeyListener(new KeyListener() {
 
 

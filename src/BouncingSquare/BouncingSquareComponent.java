@@ -7,8 +7,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class BouncingSquareComponent extends JComponent {
-    private AtomicInteger y = new AtomicInteger(320);
+    public AtomicInteger y = new AtomicInteger(320);
     private AtomicInteger x =  new AtomicInteger(30);
+    private boolean bounceSquare = true;
     private int SZE = 30;
     //oval
     private AtomicInteger xOval = new AtomicInteger(65);
@@ -39,6 +40,9 @@ public class BouncingSquareComponent extends JComponent {
             x.set(a);
         }
     }
+    //
+
+
     public void xMinus(){
         if(x.get() > 0){
             int a = x.get();
@@ -46,7 +50,33 @@ public class BouncingSquareComponent extends JComponent {
             x.set(a);
         }
     }
-
+    // гравитация квадрата
+    public void gravity(){
+        if(y.get() < 320){
+            int a = y.get();
+            a++;
+            y.set(a);
+        }
+    }
+    // прыжок квадрвта
+    public void bounce() {
+        if (bounceSquare) {
+            for (int i = 0; i < 130; i++) {
+                try {
+                    Thread.sleep(2);
+                } catch (InterruptedException e) {
+                }
+                int a = y.get();
+                a--;
+                y.set(a);
+            }
+            bounceSquare = false;
+        }
+        if(y.get() == 320){
+            bounceSquare = true;
+        }
+    }
+//поведание круга с квадратом и возращения круга в начала с новыми кординатами Y
     public void setYXOval(){
         if(!ovalTrFol) {
             int a = xOval.get();
@@ -57,7 +87,7 @@ public class BouncingSquareComponent extends JComponent {
             }
         }if(ovalTrFol){
             xOval.set(400);
-            int a = random.nextInt(275) + 50;
+            int a = random.nextInt(270) + 50;
             yOval.set(a);
             ovalTrFol = false;
         }
