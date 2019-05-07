@@ -22,5 +22,11 @@ public class ArrayInit {
             System.out.println();
         }
 
+        String string = new String("qwr");
+        String sd = new String("qwr");
+
+            System.out.println(sd.equals(string));
+
+
     }
 }

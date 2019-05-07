@@ -8,20 +8,20 @@ public class Item {
     //тип (ресурс, броня или оруж, хлам)
     private String itemType;
     //кол-во
-    private String itemNumber;
+    private Integer itemNumber;
     //описание
     private String itemDescription;
 
     public Item(){}
 
-    public Item(String itemName, String itemType, String itemNumber, String itemDescription) {
+    public Item(String itemName, String itemType, Integer itemNumber, String itemDescription) {
         this.itemName = itemName;
         this.itemType = itemType;
         this.itemNumber = itemNumber;
         this.itemDescription = itemDescription;
     }
 
-    public Item(long itemId, String itemName, String itemType, String itemNumber, String itemDescription) {
+    public Item(Long itemId, String itemName, String itemType, Integer itemNumber, String itemDescription) {
         this.itemId = itemId;
         this.itemName = itemName;
         this.itemType = itemType;
@@ -53,11 +53,11 @@ public class Item {
         this.itemType = itemType;
     }
 
-    public String getItemNumber() {
+    public Integer getItemNumber() {
         return itemNumber;
     }
 
-    public void setItemNumber(String itemNumber) {
+    public void setItemNumber(Integer itemNumber) {
         this.itemNumber = itemNumber;
     }
 

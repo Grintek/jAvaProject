@@ -3,10 +3,12 @@ package newProject.dao;
 import newProject.Item;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ItemSimpleDAO implements ItemDAO {
     private List<Item> items = new ArrayList<Item>();
+
     @Override
     public Long addItem(Item item) {
         Long id = generateItemId();
@@ -19,26 +21,38 @@ public class ItemSimpleDAO implements ItemDAO {
     public void updateItem(Item item) {
         Item oldItem = getItem(item.getItemId());
         if(oldItem != null){
-            oldItem.getItemName(item.getItemName());
-            oldItem.getItemType(item.getItemType());
-            oldItem.getItemNumber(item.getItemNumber());
-            oldItem.getItemDescription(item.getItemDescription());
+            oldItem.setItemName(item.getItemName());
+            oldItem.setItemType(item.getItemType());
+            oldItem.setItemNumber(item.getItemNumber());
+            oldItem.setItemDescription(item.getItemDescription());
         }
     }
 
     @Override
     public void deleteItem(Long itemId) {
+        for (Iterator<Item> it = items.iterator(); it.hasNext();){
+            Item itn = it.next();
+            if(itemId.equals(itn.getItemId())){
+                it.remove();
+            }
+        }
 
     }
 
     @Override
     public Item getItem(Long itemId) {
+        for(Item item : items){
+            if(itemId.equals(item.getItemId())){
+                return item;
+            }
+        }
         return null;
+
     }
 
     @Override
     public List<Item> findItem() {
-        return null;
+        return items;
     }
 
     private Long generateItemId(){
