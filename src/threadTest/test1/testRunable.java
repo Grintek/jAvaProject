@@ -1,4 +1,4 @@
-package threadTest;
+package threadTest.test1;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;

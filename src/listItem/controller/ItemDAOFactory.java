@@ -1,4 +1,4 @@
-package listContact;
+package listItem.controller;
 
 public class ItemDAOFactory {
     public static ItemDAO getItemDAO(){

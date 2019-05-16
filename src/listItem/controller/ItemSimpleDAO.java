@@ -1,10 +1,8 @@
-package listContact;
+package listItem.controller;
 
-import javax.swing.text.html.HTMLDocument;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 public class ItemSimpleDAO implements ItemDAO {
 

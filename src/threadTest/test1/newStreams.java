@@ -1,4 +1,4 @@
-package threadTest;
+package threadTest.test1;
 
 class TestThread extends Thread{
 

@@ -1,4 +1,4 @@
-package threadTest;
+package threadTest.test1;
 
 class EggVoice extends Thread{
 

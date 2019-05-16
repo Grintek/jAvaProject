@@ -1,4 +1,4 @@
-package listContact;
+package listItem.controller;
 
 public class Item {
     //ID предмета

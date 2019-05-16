@@ -1,4 +1,6 @@
-package listContact;
+package listItem.controller;
+
+import listItem.controller.Item;
 
 import java.util.List;
 
